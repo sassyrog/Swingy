@@ -9,9 +9,11 @@ package com.swingy.app;
 
 public class App
 {
-    private JFrame jFrame = new JFrame("Roger");
     public static void main( String[] args )
     {
+        JFrame jFrame = new JFrame("Roger");
+        // jFrame.setBackground(new Color(255));
+        jFrame.show();
         System.out.println( "Hello World!" );
     }
 }
