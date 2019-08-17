@@ -13,7 +13,7 @@ public class Player {
 	private int		hitPoints;
 
 
-	Player () {
+	Player (String name) {
 
 	}
 
