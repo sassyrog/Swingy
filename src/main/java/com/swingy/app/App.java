@@ -20,8 +20,8 @@ public class App {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         // try {
-            MongoClient mClient = new MongoClient(new MongoClientURI("mongodb://127.0.0.1:27017"));
-            mClient.getDB("roger");
+        MongoClient mClient = new MongoClient("localhost", 27017);
+        // mClient.getDB("roger");
 
         // } catch (UnknownHostException e) {
         // }
