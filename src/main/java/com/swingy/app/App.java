@@ -5,9 +5,11 @@ package com.swingy.app;
  *
  */
 
+import com.mongodb.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Scanner;
+import java.net.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +19,12 @@ public class App {
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
+        // try {
+            MongoClient mClient = new MongoClient(new MongoClientURI("mongodb://127.0.0.1:27017"));
+            mClient.getDB("roger");
+
+        // } catch (UnknownHostException e) {
+        // }
 
         if (args.length < 1) {
             String text = Colors._CYAN
@@ -29,9 +37,13 @@ public class App {
                     if (text.charAt(i) == '.')
                         Thread.sleep(500);
                     else
-                        Thread.sleep(100);
+                        Thread.sleep(80);
+                    if (Thread.interrupted()) {
+                        break;
+                    }
                 } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
+                    break;
                 }
             }
             System.out.print("Would you like to create a new hero? (y|n) : ");
