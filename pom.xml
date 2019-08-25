@@ -20,13 +20,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>ojdbc14</artifactId>
-      <version>10.2.0.2.0</version>
-      <!-- <scope>system</scope>
-      <systemPath>${project.basedir}/ojdbc14-10.2.0.2.0.jar</systemPath> -->
-    </dependency>
-    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
