@@ -6,6 +6,7 @@ package com.swingy.app;
  */
 
 import java.sql.*;
+import com.swingy.controls.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -14,6 +15,7 @@ import java.net.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 import com.swingy.views.Colors;
 
 public class App {
@@ -22,11 +24,8 @@ public class App {
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
-
-        // try {
-        System.out.println(
-                "-------- Simple Crunchify Tutorial on how to make JDBC connection to MySQL DB locally on macOS ------------");
-        makeJDBCConnection();
+        MysqlConnect conn = MysqlConnect.getDbCon();
+        // conn.query("CREATE ")
 
         // } catch (SQLException e) {
 
