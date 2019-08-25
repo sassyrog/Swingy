@@ -19,13 +19,20 @@ import javax.swing.JLabel;
 import com.swingy.views.Colors;
 
 public class App {
-    static Connection conn = null;
-    static PreparedStatement pStatement = null;
+    static MysqlConnect conn = MysqlConnect.getDbCon();
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
-        MysqlConnect conn = MysqlConnect.getDbCon();
-        // conn.query("CREATE ")
+
+        try {
+            ResultSet rSet = conn.query("SELECT * FROM Players");
+            rSet.next();
+            System.out.println(rSet.getString("Name"));
+            rSet.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         // } catch (SQLException e) {
 
@@ -107,20 +114,6 @@ public class App {
         // e.printStackTrace();
         // return;
         // }
-
-        try {
-            // DriverManager: The basic service for managing a set of JDBC drivers.
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "Rootroot3%");
-            if (conn != null) {
-                System.out.println("Connection Successful! Enjoy. Now it's time to push data");
-            } else {
-                System.out.println("Failed to make connection!");
-            }
-        } catch (SQLException e) {
-            System.out.println("MySQL Connection Failed!");
-            e.printStackTrace();
-            return;
-        }
 
     }
 }
