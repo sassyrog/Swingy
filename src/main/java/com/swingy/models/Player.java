@@ -1,5 +1,7 @@
 package com.swingy.models;
 
+import com.swingy.controls.MysqlConnect;
+
 /**
  * Player
  */
@@ -12,6 +14,10 @@ public class Player {
 	private int attack;
 	private int defense;
 	private int hitPoints;
+
+	Player() {
+
+	}
 
 	Player(String name) {
 
