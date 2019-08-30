@@ -34,14 +34,10 @@ public class App {
                     String text = Colors._CYAN + "\nWelcome back!!!\n\n" + Colors._RESET;
                     for (int i = 0; i < text.length(); i++) {
                         System.out.printf("%c", text.charAt(i));
-                        try {
-                            if (text.charAt(i) == '.')
-                                Thread.sleep(500);
-                            else
-                                Thread.sleep(80);
-                        } catch (InterruptedException ex) {
-                            Thread.currentThread().interrupt();
-                        }
+                        if (text.charAt(i) == '.')
+                            Thread.sleep(500);
+                        else
+                            Thread.sleep(80);
                     }
                 } else {
                     String text = Colors._CYAN
@@ -49,18 +45,13 @@ public class App {
                             + Colors._RESET;
                     for (int i = 0; i < text.length(); i++) {
                         System.out.printf("%c", text.charAt(i));
-                        try {
-                            if (text.charAt(i) == '.')
-                                Thread.sleep(500);
-                            else
-                                Thread.sleep(80);
-                        } catch (InterruptedException ex) {
-                            Thread.currentThread().interrupt();
-                            break;
-                        }
+                        Thread.sleep(80);
                     }
                 }
             } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (InterruptedException ie) {
+                ie.printStackTrace();
             }
             System.out.print(Colors._WHITE + "Would you like to create a new hero? (y|n) : " + Colors._RESET);
             String opt = scn.nextLine().trim();
