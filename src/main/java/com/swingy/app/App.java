@@ -7,7 +7,7 @@ package com.swingy.app;
 
 import java.sql.*;
 import com.swingy.controls.*;
-import com.swingy.models.Player;
+import com.swingy.models.Hero;
 
 import java.awt.*;
 import java.io.*;
@@ -29,7 +29,6 @@ public class App {
         if (args.length < 1) {
             try {
                 ResultSet rSet = conn.query("SELECT 1 FROM Players LIMIT 1;");
-
                 if (rSet.next() != false) {
                     String text = Colors._CYAN + "\nWelcome back!!!\n\n" + Colors._RESET;
                     for (int i = 0; i < text.length(); i++) {

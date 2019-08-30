@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 /**
- * Player
+ * Hero
  */
-public class Player {
+public class Hero {
 	private int id;
 	private String heroName;
 	private String heroClass;
@@ -21,7 +21,7 @@ public class Player {
 	private static int idCounter = 0;
 	static MysqlConnect conn = MysqlConnect.getDbCon();
 
-	public Player(String name, String heroClass) {
+	public Hero(String name, String heroClass) {
 		this.id = nextId();
 		this.level = 1;
 		// this.experience = ;
@@ -32,7 +32,7 @@ public class Player {
 
 	}
 
-	public Player(int _id) {
+	public Hero(int _id) {
 		this.id = _id;
 		try {
 			conn.query("SELECT * FROM Players WHERE ID = " + _id);
