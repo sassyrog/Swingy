@@ -26,54 +26,43 @@ public class App {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
 
-        Player player = new Player(1);
-        System.out.println("----> " + player.getHeroName());
-
-        try {
-            ResultSet rSet = conn.query("SELECT * FROM Players");
-            rSet.next();
-            System.out.println(rSet.getString("Name"));
-            rSet.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        // } catch (SQLException e) {
-
-        // e.printStackTrace();
-        // }
         if (args.length < 1) {
-            String text = Colors._CYAN
-                    + "\nWelcome to the hero war game.\nStarting mode can be chosen\nbetween Console (Default) and GUI. You can choose to\ncreate a new hero or choose from previously created heros.\nIf there are no previously created\nheros, you'll be required to create a new hero.\n\n"
-                    + Colors._RESET;
-            int i;
-            // long end = System.currentTimeMillis() + 60 * 10;
-            InputStreamReader fileInputStream = new InputStreamReader(System.in);
-            BufferedReader bufferedReader = new BufferedReader(fileInputStream);
             try {
-                while (true) {
-                    if (bufferedReader.ready()) {
-                        System.out.println(bufferedReader.readLine());
-                        // break;
+                ResultSet rSet = conn.query("SELECT 1 FROM Players LIMIT 1;");
+
+                if (rSet.next() != false) {
+                    String text = Colors._CYAN + "\nWelcome back!!!\n\n" + Colors._RESET;
+                    for (int i = 0; i < text.length(); i++) {
+                        System.out.printf("%c", text.charAt(i));
+                        try {
+                            if (text.charAt(i) == '.')
+                                Thread.sleep(500);
+                            else
+                                Thread.sleep(80);
+                        } catch (InterruptedException ex) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                } else {
+                    String text = Colors._CYAN
+                            + "\nWelcome to the hero war game.\nStarting mode can be chosen\nbetween Console (Default) and GUI. You can choose to\ncreate a new hero or choose from previously created heros.\nIf there are no previously created\nheros, you'll be required to create a new hero.\n\n"
+                            + Colors._RESET;
+                    for (int i = 0; i < text.length(); i++) {
+                        System.out.printf("%c", text.charAt(i));
+                        try {
+                            if (text.charAt(i) == '.')
+                                Thread.sleep(500);
+                            else
+                                Thread.sleep(80);
+                        } catch (InterruptedException ex) {
+                            Thread.currentThread().interrupt();
+                            break;
+                        }
                     }
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (SQLException e) {
             }
-            // for (i = 0; i < text.length(); i++) {
-            // System.out.printf("%c", text.charAt(i));
-            // try {
-            // if (text.charAt(i) == '.')
-            // Thread.sleep(500);
-            // else
-            // Thread.sleep(80);
-            // } catch (InterruptedException ex) {
-            // Thread.currentThread().interrupt();
-            // break;
-            // }
-            // }
-            System.out.print("Would you like to create a new hero? (y|n) : ");
+            System.out.print(Colors._WHITE + "Would you like to create a new hero? (y|n) : " + Colors._RESET);
             String opt = scn.nextLine().trim();
             System.out.println(opt);
         } else {
