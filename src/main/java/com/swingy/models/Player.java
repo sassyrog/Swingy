@@ -1,6 +1,7 @@
 package com.swingy.models;
 
 import com.swingy.controls.MysqlConnect;
+import java.sql.SQLException;
 
 /**
  * Player
@@ -15,12 +16,15 @@ public class Player {
 	private int defense;
 	private int hitPoints;
 
-	Player() {
+	static int idCounter = 0;
+	MysqlConnect conn = MysqlConnect.getDbCon();
 
+	Player() {
+		this.id = nextId();
 	}
 
-	Player(String name) {
-
+	Player(int _id) {
+		this.id = _id;
 	}
 
 	public String getHeroName() {
@@ -57,6 +61,11 @@ public class Player {
 
 	public void setHeroName(String heroName) {
 		this.heroName = heroName;
+		try {
+			conn.query("UPDATE Players SET Name = '" + heroName + "' WHERE ID = " + this.id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setHeroClass(String heroClass) {
@@ -81,5 +90,9 @@ public class Player {
 
 	public void setHitPoints(int hitPoints) {
 		this.hitPoints = hitPoints;
+	}
+
+	private int nextId() {
+		return idCounter++;
 	}
 }
