@@ -16,12 +16,14 @@ public class Player {
 	private int attack;
 	private int defense;
 	private int hitPoints;
+	protected Position position;
 
 	static int idCounter = 0;
 	static MysqlConnect conn = MysqlConnect.getDbCon();
 
 	public Player() {
 		this.id = nextId();
+		this.position = new Position(this.level);
 	}
 
 	public Player(int _id) {
