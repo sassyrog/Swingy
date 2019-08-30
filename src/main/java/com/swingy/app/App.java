@@ -25,8 +25,8 @@ public class App {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
 
-        Player player = new Player();
-        player.setHeroName("Malibu");
+        Player player = new Player(1);
+        System.out.println("----> " + player.getHeroName());
 
         try {
             ResultSet rSet = conn.query("SELECT * FROM Players");

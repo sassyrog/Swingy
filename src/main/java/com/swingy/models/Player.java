@@ -2,6 +2,7 @@ package com.swingy.models;
 
 import com.swingy.controls.MysqlConnect;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 /**
  * Player
@@ -25,6 +26,21 @@ public class Player {
 
 	public Player(int _id) {
 		this.id = _id;
+		try {
+			conn.query("SELECT * FROM Players WHERE ID = " + _id);
+			ResultSet rSet = conn.query("SELECT * FROM Players");
+			if (rSet.next() != false) {
+				this.heroName = rSet.getString("Name");
+				this.heroClass = rSet.getString("Class");
+				this.level = rSet.getInt("Level");
+				this.experience = rSet.getInt("Expirience");
+				this.attack = rSet.getInt("Attack");
+				this.defense = rSet.getInt("Defense");
+				this.hitPoints = rSet.getInt("HitPoints");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getHeroName() {
@@ -70,26 +86,56 @@ public class Player {
 
 	public void setHeroClass(String heroClass) {
 		this.heroClass = heroClass;
+		try {
+			conn.insert("UPDATE Players SET Class = '" + heroClass + "' WHERE ID = " + this.id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setLevel(int level) {
 		this.level = level;
+		try {
+			conn.insert("UPDATE Players SET Level = " + level + " WHERE ID = " + this.id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setExperience(int experience) {
 		this.experience = experience;
+		try {
+			conn.insert("UPDATE Players SET Expirience = " + experience + " WHERE ID = " + this.id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setAttack(int attack) {
 		this.attack = attack;
+		try {
+			conn.insert("UPDATE Players SET Attack = " + attack + " WHERE ID = " + this.id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setDefense(int defense) {
 		this.defense = defense;
+		try {
+			conn.insert("UPDATE Players SET Defense = " + defense + " WHERE ID = " + this.id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setHitPoints(int hitPoints) {
 		this.hitPoints = hitPoints;
+		try {
+			conn.insert("UPDATE Players SET HitPoints = " + hitPoints + " WHERE ID = " + this.id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private int nextId() {
