@@ -18,12 +18,18 @@ public class Player {
 	private int hitPoints;
 	protected Position position;
 
-	static int idCounter = 0;
+	private static int idCounter = 0;
 	static MysqlConnect conn = MysqlConnect.getDbCon();
 
-	public Player() {
+	public Player(String name, String heroClass) {
 		this.id = nextId();
+		this.level = 1;
+		// this.experience = ;
+		// this.attack = ;
+		// this.defense = ;
+		// this.hitPoints = ;
 		this.position = new Position(this.level);
+
 	}
 
 	public Player(int _id) {
@@ -141,6 +147,6 @@ public class Player {
 	}
 
 	private int nextId() {
-		return idCounter++;
+		return ++idCounter;
 	}
 }

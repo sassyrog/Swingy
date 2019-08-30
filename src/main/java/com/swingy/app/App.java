@@ -10,6 +10,7 @@ import com.swingy.controls.*;
 import com.swingy.models.Player;
 
 import java.awt.*;
+import java.io.*;
 import java.awt.event.*;
 import java.util.Scanner;
 import java.net.*;
@@ -47,18 +48,31 @@ public class App {
                     + "\nWelcome to the hero war game.\nStarting mode can be chosen\nbetween Console (Default) and GUI. You can choose to\ncreate a new hero or choose from previously created heros.\nIf there are no previously created\nheros, you'll be required to create a new hero.\n\n"
                     + Colors._RESET;
             int i;
-            for (i = 0; i < text.length(); i++) {
-                System.out.printf("%c", text.charAt(i));
-                try {
-                    if (text.charAt(i) == '.')
-                        Thread.sleep(500);
-                    else
-                        Thread.sleep(80);
-                } catch (InterruptedException ex) {
-                    Thread.currentThread().interrupt();
-                    break;
+            // long end = System.currentTimeMillis() + 60 * 10;
+            InputStreamReader fileInputStream = new InputStreamReader(System.in);
+            BufferedReader bufferedReader = new BufferedReader(fileInputStream);
+            try {
+                while (true) {
+                    if (bufferedReader.ready()) {
+                        System.out.println(bufferedReader.readLine());
+                        // break;
+                    }
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            // for (i = 0; i < text.length(); i++) {
+            // System.out.printf("%c", text.charAt(i));
+            // try {
+            // if (text.charAt(i) == '.')
+            // Thread.sleep(500);
+            // else
+            // Thread.sleep(80);
+            // } catch (InterruptedException ex) {
+            // Thread.currentThread().interrupt();
+            // break;
+            // }
+            // }
             System.out.print("Would you like to create a new hero? (y|n) : ");
             String opt = scn.nextLine().trim();
             System.out.println(opt);
