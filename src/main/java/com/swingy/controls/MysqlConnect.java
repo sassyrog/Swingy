@@ -71,7 +71,11 @@ public final class MysqlConnect {
 		statement = db.conn.createStatement();
 		int result = statement.executeUpdate(insertQuery);
 		return result;
-
 	}
 
+	public void printHeros(ResultSet rSet) throws SQLException {
+		while (rSet.next() == true) {
+			System.out.printf("+---------------+");
+		}
+	}
 }

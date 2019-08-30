@@ -41,7 +41,7 @@ public class Hero {
 				this.heroName = rSet.getString("Name");
 				this.heroClass = rSet.getString("Class");
 				this.level = rSet.getInt("Level");
-				this.experience = rSet.getInt("Expirience");
+				this.experience = rSet.getInt("Experience");
 				this.attack = rSet.getInt("Attack");
 				this.defense = rSet.getInt("Defense");
 				this.hitPoints = rSet.getInt("HitPoints");
@@ -113,7 +113,7 @@ public class Hero {
 	public void setExperience(int experience) {
 		this.experience = experience;
 		try {
-			conn.insert("UPDATE Players SET Expirience = " + experience + " WHERE ID = " + this.id);
+			conn.insert("UPDATE Players SET Experience = " + experience + " WHERE ID = " + this.id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

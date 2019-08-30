@@ -9,7 +9,7 @@ if [ "$USER" = "rmdaba" ] ; then
 	Attack int(11) NOT NULL,\
 	Defense int(11) NOT NULL,\
 	HitPoints int(11) NOT NULL,\
-	Expirience int(11) NOT NULL
+	Experience int(11) NOT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1;"
 else
 	mysql --host=localhost --user=root --password="Rootroot3" \
@@ -22,6 +22,6 @@ else
 	Attack int(11) NOT NULL,\
 	Defense int(11) NOT NULL,\
 	HitPoints int(11) NOT NULL,\
-	Expirience int(11) NOT NULL
+	Experience int(11) NOT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1;"
 fi
