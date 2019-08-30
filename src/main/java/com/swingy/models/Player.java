@@ -17,13 +17,13 @@ public class Player {
 	private int hitPoints;
 
 	static int idCounter = 0;
-	MysqlConnect conn = MysqlConnect.getDbCon();
+	static MysqlConnect conn = MysqlConnect.getDbCon();
 
-	Player() {
+	public Player() {
 		this.id = nextId();
 	}
 
-	Player(int _id) {
+	public Player(int _id) {
 		this.id = _id;
 	}
 
@@ -62,7 +62,7 @@ public class Player {
 	public void setHeroName(String heroName) {
 		this.heroName = heroName;
 		try {
-			conn.query("UPDATE Players SET Name = '" + heroName + "' WHERE ID = " + this.id);
+			conn.insert("UPDATE Players SET Name = '" + heroName + "' WHERE ID = " + this.id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
