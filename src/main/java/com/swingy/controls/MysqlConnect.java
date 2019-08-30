@@ -14,7 +14,13 @@ public final class MysqlConnect {
 	public static MysqlConnect db;
 
 	private MysqlConnect() {
-		String url = "jdbc:mysql://192.168.99.100:3306/Swingy";
+		String url = "";
+
+		if (System.getenv("USER").equals("rmdaba")) {
+			url = "jdbc:mysql://192.168.99.100:3306/Swingy";
+		} else {
+		}
+
 		// String dbName = "database_name";
 		String driver = "com.mysql.jdbc.Driver";
 		String userName = "root";
