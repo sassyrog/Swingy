@@ -84,22 +84,14 @@ public final class MysqlConnect {
 			rSet.last();
 			gg = new String[rSet.getRow() + 1][];
 			rSet.beforeFirst();
-			gg[0] = new String[] {
-				" ID ",
-				" HERO NAME ",
-				" HERO CLASS ",
-				" XP ",
-				" LEVEL "
-			};
+			gg[0] = new String[] { " ID ", " HERO NAME ", " HERO CLASS ", " XP ", " LEVEL " };
 		}
 
 		int i = 1;
 		while (rSet.next() == true) {
-			gg[i] = new String[] {
-				" " + rSet.getInt("ID") + " ", " " + rSet.getString("Name") + " ",
+			gg[i] = new String[] { " " + rSet.getInt("ID") + " ", " " + rSet.getString("Name") + " ",
 					" " + rSet.getString("Class") + " ", " " + rSet.getInt("Experience") + " ",
-					" " + rSet.getInt("Level") + " "
-			};
+					" " + rSet.getInt("Level") + " " };
 			i++;
 		}
 		printer.print(gg);
