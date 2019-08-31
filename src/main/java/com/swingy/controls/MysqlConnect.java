@@ -84,9 +84,8 @@ public final class MysqlConnect {
 			rSet.last();
 			gg = new String[rSet.getRow() + 1][];
 			rSet.beforeFirst();
+			gg[0] = new String[] { " ID ", " HERO NAME ", " HERO CLASS ", " XP ", " LEVEL " };
 		}
-
-		gg[0] = new String[] { " ID ", " HERO NAME ", " HERO CLASS ", " XP ", " LEVEL " };
 
 		int i = 1;
 		while (rSet.next() == true) {
