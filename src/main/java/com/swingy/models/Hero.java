@@ -19,7 +19,7 @@ public class Hero {
 	protected Position position;
 
 	private static int idCounter = 0;
-	static MysqlConnect conn = MysqlConnect.getDbCon();
+	MysqlConnect conn = MysqlConnect.getDbCon();
 
 	public Hero(String name, String heroClass) throws SQLException {
 		ResultSet rSet = conn.query("SELECT MAX(ID) AS 'MaxID' FROM Players");
