@@ -52,7 +52,11 @@ public class App {
                         new TypeWriter(Colors._CYAN
                                 + "\nHere are the Top 10 heros, based on experience points,\nthat have been previously created. Please select a hero\nusing their Hero ID e.g 123.\n\n"
                                 + Colors._RESET, 40);
+                        HeroFactory hf = new HeroFactory();
                         conn.printHeros(rSet);
+                        System.out.print(Colors._WHITE + "Please enter hero by ID : " + Colors._RESET);
+                        Hero hero = hf.newHero(scn.nextInt());
+                        System.out.println("----> " + hero.getExperience());
                         break;
                     } else if (inpuString.equals("y") || inpuString.equals("Y")) {
                         System.out.println("----yes----");

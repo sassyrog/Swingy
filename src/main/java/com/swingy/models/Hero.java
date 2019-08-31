@@ -38,8 +38,7 @@ public class Hero {
 	public Hero(int _id) {
 		this.id = _id;
 		try {
-			conn.query("SELECT * FROM Players WHERE ID = " + _id);
-			ResultSet rSet = conn.query("SELECT * FROM Players");
+			ResultSet rSet = conn.query("SELECT * FROM Players WHERE ID = " + _id);
 			if (rSet.next() != false) {
 				this.heroName = rSet.getString("Name");
 				this.heroClass = rSet.getString("Class");
