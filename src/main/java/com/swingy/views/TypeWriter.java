@@ -1,11 +1,11 @@
 package com.swingy.views;
 
 /**
- * TypeWritter
+ * TypeWriter
  */
-public class TypeWritter {
+public class TypeWriter {
 
-	public TypeWritter(String text) {
+	public TypeWriter(String text) {
 		try {
 			for (int i = 0; i < text.length(); i++) {
 				System.out.printf("%c", text.charAt(i));
@@ -19,7 +19,7 @@ public class TypeWritter {
 		}
 	}
 
-	public TypeWritter(String text, int fps) {
+	public TypeWriter(String text, int fps) {
 		try {
 			for (int i = 0; i < text.length(); i++) {
 				System.out.printf("%c", text.charAt(i));

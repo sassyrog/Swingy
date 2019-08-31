@@ -19,7 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import com.swingy.views.Colors;
-import com.swingy.views.TypeWritter;
+import com.swingy.views.TypeWriter;
 
 public class App {
     static MysqlConnect conn = MysqlConnect.getDbCon();
@@ -31,9 +31,9 @@ public class App {
             try {
                 ResultSet rSet = conn.query("SELECT 1 FROM Players LIMIT 1;");
                 if (rSet.next() != false) {
-                    new TypeWritter(Colors._CYAN + "\nWelcome back!!!\n\n" + Colors._RESET);
+                    new TypeWriter(Colors._CYAN + "\nWelcome back!!!\n\n" + Colors._RESET);
                 } else {
-                    new TypeWritter(Colors._CYAN
+                    new TypeWriter(Colors._CYAN
                             + "\nWelcome to the hero war game.\nStarting mode can be chosen\nbetween Console (Default) and GUI. You can choose to\ncreate a new hero or choose from previously created heros.\nIf there are no previously created\nheros, you'll be required to create a new hero.\n\n"
                             + Colors._RESET);
                 }
@@ -43,20 +43,18 @@ public class App {
 
             try {
 
-                System.out.print(Colors._WHITE + "Would you like to create a new hero? (y|n) : " + Colors._RESET);
+                System.out.print(Colors._WHITE + "Would you like to create a new hero? (Y|N) : " + Colors._RESET);
                 while (true) {
                     String inpuString = scn.nextLine().trim();
-                    if (inpuString.equals("n")) {
+                    if (inpuString.equals("n") || inpuString.equals("N")) {
                         ResultSet rSet = conn.query("SELECT * FROM Players ORDER BY Experience ASC LIMIT 10");
 
-                        // new TypeWritter(Colors._CYAN
-                        // + "\nHere are the Top 10 heros, based on experience points,\nthat have been
-                        // previously created. Please select a hero\nusing their Hero ID e.g 123.\n\n"
-                        // + Colors._RESET, 40);
-                        new Hero("PLPL", "kkkkk");
+                        new TypeWriter(Colors._CYAN
+                                + "\nHere are the Top 10 heros, based on experience points,\nthat have been previously created. Please select a hero\nusing their Hero ID e.g 123.\n\n"
+                                + Colors._RESET, 40);
                         conn.printHeros(rSet);
                         break;
-                    } else if (inpuString.equals("y")) {
+                    } else if (inpuString.equals("y") || inpuString.equals("Y")) {
                         System.out.println("----yes----");
                         break;
                     }
