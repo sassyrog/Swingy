@@ -27,7 +27,7 @@ public class Hero {
 			idCounter = rSet.getInt("MaxID");
 		this.id = nextId();
 		this.level = 1;
-		// this.experience = ;
+		this.experience = 1 * 1000 + (0) ^ 2 * 450;
 		// this.attack = ;
 		// this.defense = ;
 		// this.hitPoints = ;
@@ -48,6 +48,8 @@ public class Hero {
 				this.attack = rSet.getInt("Attack");
 				this.defense = rSet.getInt("Defense");
 				this.hitPoints = rSet.getInt("HitPoints");
+			} else {
+				throw new SQLException("Lol");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -113,10 +115,10 @@ public class Hero {
 		}
 	}
 
-	public void setExperience(int experience) {
-		this.experience = experience;
+	public void setExperience(int _level) {
+		this.experience = _level * 1000 + (_level - 1) ^ 2 * 450;
 		try {
-			conn.insert("UPDATE Players SET Experience = " + experience + " WHERE ID = " + this.id);
+			conn.insert("UPDATE Players SET Experience = " + this.experience + " WHERE ID = " + this.id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
