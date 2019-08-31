@@ -49,9 +49,11 @@ public class App {
                     if (inpuString.equals("n")) {
                         ResultSet rSet = conn.query("SELECT * FROM Players ORDER BY Experience ASC LIMIT 10");
 
-                        new TypeWritter(Colors._CYAN
-                                + "\nHere are the Top 10 heros, based on experience points,\nthat have been previously created. Please select a hero\nusing their Hero ID e.g 123.\n\n"
-                                + Colors._RESET, 40);
+                        // new TypeWritter(Colors._CYAN
+                        // + "\nHere are the Top 10 heros, based on experience points,\nthat have been
+                        // previously created. Please select a hero\nusing their Hero ID e.g 123.\n\n"
+                        // + Colors._RESET, 40);
+                        new Hero("PLPL", "kkkkk");
                         conn.printHeros(rSet);
                         break;
                     } else if (inpuString.equals("y")) {

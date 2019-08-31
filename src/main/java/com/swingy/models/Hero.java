@@ -21,7 +21,10 @@ public class Hero {
 	private static int idCounter = 0;
 	static MysqlConnect conn = MysqlConnect.getDbCon();
 
-	public Hero(String name, String heroClass) {
+	public Hero(String name, String heroClass) throws SQLException {
+		ResultSet rSet = conn.query("SELECT MAX(ID) AS 'MaxID' FROM Players");
+		if (rSet.next() == true)
+			idCounter = rSet.getInt("MaxID");
 		this.id = nextId();
 		this.level = 1;
 		// this.experience = ;

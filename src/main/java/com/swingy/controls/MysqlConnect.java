@@ -19,6 +19,7 @@ public final class MysqlConnect {
 		if (System.getenv("USER").equals("rmdaba")) {
 			url = "jdbc:mysql://192.168.99.100:3306/Swingy";
 		} else {
+			url = "jdbc:mysql://localhost:3306/Swingy";
 		}
 
 		// String dbName = "database_name";
@@ -74,8 +75,25 @@ public final class MysqlConnect {
 	}
 
 	public void printHeros(ResultSet rSet) throws SQLException {
+		System.out.printf("+-----+---------------+---------------+-----+-----+\n");
+		System.out.printf("| ID  |   HERO NAME   |  HERO CLASS   | XP  |LEVEL|\n");
 		while (rSet.next() == true) {
-			System.out.printf("+---------------+");
+			String sp = "               ";
+			int id = rSet.getInt("Id");
+			String heroName = rSet.getString("Name");
+			String heroClass = rSet.getString("Class");
+			int level = rSet.getInt("Level");
+			int experience = rSet.getInt("Experience");
+			System.out.printf("+-----+---------------+---------------+-----+-----+\n");
+			int widthn = 14 - heroName.length();
+			int widthc = 14 - heroClass.length();
+			String tmp, tmp2;
+			tmp = (widthn < 0) ? sp.substring(0, 0) : sp.substring(0, widthn);
+			tmp2 = (widthc < 0) ? sp.substring(0, 0) : sp.substring(0, widthc);
+			System.out.printf("|%-5d|%.14s%s*|", id, heroName, tmp);
+			System.out.printf("%.14s%s*|", heroClass, tmp2);
+			System.out.printf("%-5d|%-5d|\n", experience, level);
 		}
+		System.out.printf("+-----+---------------+---------------+-----+-----+\n\n");
 	}
 }
