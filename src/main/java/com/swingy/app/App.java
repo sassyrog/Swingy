@@ -18,7 +18,7 @@ public class App {
 
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
-		HeroFactory hf = null;
+		HeroFactory hf = new HeroFactory();
 		Hero hero = null;
 
 		try {
@@ -35,17 +35,13 @@ public class App {
 			String inputString = scn.nextLine().trim();
 
 			if (inputString.equals("n") || inputString.equals("N")) {
-				// rSet = conn.query("SELECT * FROM Players ORDER BY Experience ASC LIMIT 10");
+				rSet = conn.query("SELECT * FROM Players ORDER BY Experience ASC LIMIT 10");
 				new TypeWriter(Colors._CYAN
 						+ "\nHere are the Top 10 heros, based on experience points,\nthat have been previously created. Please select a hero\nusing their Hero ID e.g 123.\n\n"
-						+ Colors._RESET, 40);
-				hf = new HeroFactory();
-				// System.out.print(Colors._WHITE + "\nPlease enter hero by ID : " +
-				// Colors._RESET);
-				hero = hf.newHero("Guardian", "SassyROG");
-				rSet = conn.query("SELECT * FROM Players ORDER BY Experience ASC LIMIT 10");
+						+ Colors._RESET, 20);
 				conn.printHeros(rSet);
-				System.out.println("----> " + hero.getExperience());
+				System.out.print(Colors._WHITE + "\nPlease enter hero by ID : " + Colors._RESET);
+				hero = hf.newHero(scn.nextInt());
 			} else if (inputString.equals("y") || inputString.equals("Y")) {
 				System.out.println("----yes----");
 			}

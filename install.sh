@@ -10,7 +10,8 @@ if [ "$USER" = "rmdaba" ] ; then
 	Defense int(11) NOT NULL,\
 	HitPoints int(11) NOT NULL,\
 	Experience int(11) NOT NULL
-	) ENGINE=InnoDB DEFAULT CHARSET=latin1;"
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1;" \
+	-e "ALTER TABLE Players ADD INDEX(ID);"
 else
 	mysql --host=localhost --user=root --password="Rootroot3" \
 	-e "CREATE DATABASE IF NOT EXISTS Swingy;" -e "USE Swingy;" \
@@ -23,5 +24,6 @@ else
 	Defense int(11) NOT NULL,\
 	HitPoints int(11) NOT NULL,\
 	Experience int(11) NOT NULL
-	) ENGINE=InnoDB DEFAULT CHARSET=latin1;"
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1;" \
+	-e "ALTER TABLE Players ADD INDEX(ID);"
 fi

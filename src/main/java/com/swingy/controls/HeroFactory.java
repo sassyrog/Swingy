@@ -27,14 +27,15 @@ public class HeroFactory {
 
 	public Hero newHero(int id) throws SQLException {
 		ResultSet rSet = conn.query("SELECT Class FROM Players WHERE ID =" + id);
-		rSet.next();
-		String hString = rSet.getString("Class");
-		if (hString.equalsIgnoreCase("underdog"))
-			return new Underdog(id);
-		else if (hString.equalsIgnoreCase("guardian"))
-			return new Guardian(id);
-		else if (hString.equalsIgnoreCase("descendant"))
-			return new Descendant(id);
+		if (rSet.next() == true) {
+			String hString = rSet.getString("Class");
+			if (hString.equalsIgnoreCase("underdog"))
+				return new Underdog(id);
+			else if (hString.equalsIgnoreCase("guardian"))
+				return new Guardian(id);
+			else if (hString.equalsIgnoreCase("descendant"))
+				return new Descendant(id);
+		}
 		return null;
 	}
 }
