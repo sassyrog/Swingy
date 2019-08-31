@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.swingy.models.Hero;
-import com.swingy.models.Heros.*;
+import com.swingy.models.Heros.Underdog;
+import com.swingy.models.Heros.Guardian;
+import com.swingy.models.Heros.Descendant;
 import com.swingy.controls.MysqlConnect;
 
 /**

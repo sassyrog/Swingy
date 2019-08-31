@@ -27,7 +27,8 @@ public class Hero {
 			idCounter = rSet.getInt("MaxID");
 		this.id = nextId();
 		this.level = 1;
-		this.experience = 1 * 1000 + (0) ^ 2 * 450;
+		this.experience = 1000;
+		System.out.println("+++++ " + this.experience);
 		// this.attack = ;
 		// this.defense = ;
 		// this.hitPoints = ;
@@ -115,7 +116,7 @@ public class Hero {
 	}
 
 	public void setExperience(int _level) {
-		this.experience = _level * 1000 + (_level - 1) ^ 2 * 450;
+		this.experience = _level * 1000 + (int) Math.pow((_level - 1), 2) * 450;
 		try {
 			conn.insert("UPDATE Players SET Experience = " + this.experience + " WHERE ID = " + this.id);
 		} catch (SQLException e) {
