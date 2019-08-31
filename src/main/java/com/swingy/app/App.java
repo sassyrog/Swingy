@@ -29,6 +29,8 @@ public class App {
 				new TypeWriter(Colors._CYAN
 						+ "\nWelcome to the hero war game.\nStarting mode can be chosen\nbetween Console (Default) and GUI. You can choose to\ncreate a new hero or choose from previously created heros.\nIf there are no previously created\nheros, you'll be required to create a new hero.\n\n"
 						+ Colors._RESET);
+				conn.insert(
+						"INSERT INTO Players(ID, Name, Level, Attack, Defense, HitPoints, Experience) VALUES (1, 'Default', 1, 1, 1, 1, 1000)");
 			}
 
 			System.out.print(Colors._WHITE + "Would you like to create a new hero? (Y|N) : " + Colors._RESET);
@@ -51,33 +53,4 @@ public class App {
 		scn.close();
 	}
 
-	// JFrame frame = new JFrame("Roger");
-
-	// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	// frame.setPreferredSize(new Dimension(900, 600));
-	// frame.getContentPane().setBackground(Color.BLACK);
-
-	// JLabel label = new JLabel("I'm here");
-	// label.setPreferredSize(new Dimension(300, 100));
-	// frame.setFocusable(true);
-	// frame.getContentPane().add(label, BorderLayout.CENTER);
-
-	// frame.addKeyListener(new KeyListener() {
-	// public void keyTyped(KeyEvent e) {
-	// }
-
-	// public void keyPressed(KeyEvent e) {
-	// System.out.println("key : " + e.getKeyCode());
-	// }
-
-	// public void keyReleased(KeyEvent e) {
-	// }
-	// });
-	// frame.pack();
-	// frame.setVisible(true);
-	// while (true) {
-	// frame.repaint();
-	// // System.out.println("Hello World!");
-	// }
-	// jFrame.setBackground(new Color(255));
 }
