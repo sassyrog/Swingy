@@ -79,28 +79,22 @@ public final class MysqlConnect {
 	public void printHeros(ResultSet rSet) throws SQLException {
 		PrettyPrinter printer = new PrettyPrinter(out);
 
-		String[][] gg = new String[][] { new String[] { "FIRST NAME", "LAST NAME", "DATE OF BIRTH", "NOTES" } };
-		// gg.
-		// printer.print();
-		// System.out.printf("+-----+---------------+---------------+-----+-----+\n");
-		// System.out.printf("| ID | HERO NAME | HERO CLASS | XP |LEVEL|\n");
-		// while (rSet.next() == true) {
-		// String sp = " ";
-		// int id = rSet.getInt("Id");
-		// String heroName = rSet.getString("Name");
-		// String heroClass = rSet.getString("Class");
-		// int level = rSet.getInt("Level");
-		// int experience = rSet.getInt("Experience");
-		// System.out.printf("+-----+---------------+---------------+-----+-----+\n");
-		// int widthn = 14 - heroName.length();
-		// int widthc = 14 - heroClass.length();
-		// String tmp, tmp2;
-		// tmp = (widthn < 0) ? sp.substring(0, 0) : sp.substring(0, widthn);
-		// tmp2 = (widthc < 0) ? sp.substring(0, 0) : sp.substring(0, widthc);
-		// System.out.printf("|%-5d|%.14s%s*|", id, heroName, tmp);
-		// System.out.printf("%.14s%s*|", heroClass, tmp2);
-		// System.out.printf("%-5d|%-5d|\n", experience, level);
-		// }
-		// System.out.printf("+-----+---------------+---------------+-----+-----+\n\n");
+		String[][] gg = null;
+		if (rSet != null) {
+			rSet.last();
+			gg = new String[rSet.getRow() + 1][];
+			rSet.beforeFirst();
+		}
+
+		gg[0] = new String[] { " ID ", " HERO NAME ", " HERO CLASS ", " XP ", " LEVEL " };
+
+		int i = 1;
+		while (rSet.next() == true) {
+			gg[i] = new String[] { " " + rSet.getInt("ID") + " ", " " + rSet.getString("Name") + " ",
+					" " + rSet.getString("Class") + " ", " " + rSet.getInt("Experience") + " ",
+					" " + rSet.getInt("Level") + " " };
+			i++;
+		}
+		printer.print(gg);
 	}
 }
